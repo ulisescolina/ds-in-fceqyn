@@ -1,0 +1,253 @@
+{UTF-8}
+Acceso a material de ayuda  = A FUNCTION OF( )
+	~	
+	~		|
+
+Analisis y diseño  = A FUNCTION OF( )
+	~	
+	~		|
+
+Bases de datos  = A FUNCTION OF( )
+	~	
+	~		|
+
+Cantidad de materias cursando  = A FUNCTION OF( )
+	~	
+	~		|
+
+Cantidad de prorrogas disponibles  = A FUNCTION OF( )
+	~	
+	~		|
+
+Cantidad de tareas iniciales  = A FUNCTION OF( )
+	~	
+	~		|
+
+Carga horaria de consulta  = A FUNCTION OF( )
+	~	
+	~		|
+
+Carga horaria de dedicación al proyecto  = A FUNCTION OF( Carga horaria dedicada a la facultad\
+		,Tiene familia,Trabaja)
+	~	
+	~		|
+
+Carga horaria dedicada a la facultad  = A FUNCTION OF( Cantidad de materias cursando,\
+		Carga horaria de consulta)
+	~	
+	~		|
+
+Correcciones de cátedra  = A FUNCTION OF( -Correcciones de cátedra pasadas a tareas pendientes\
+		,Revision de cátedra)
+	~	
+	~		|
+
+Correcciones de cátedra pasadas a tareas pendientes  = A FUNCTION OF( )
+	~	
+	~		|
+
+Enfermedad  = A FUNCTION OF( )
+	~	
+	~		|
+
+Errores  = A FUNCTION OF( -Errores transformados a tareas pendientes,Generación de errores\
+		)
+	~	
+	~		|
+
+Errores transformados a tareas pendientes  = A FUNCTION OF( )
+	~	
+	~		|
+
+Experiencia  = A FUNCTION OF( Analisis y diseño,Bases de datos,Lenguaje,Tareas finalizadas\
+		)
+	~	
+	~		|
+
+Factor de disminución de productividad por enfermedad  = A FUNCTION OF( )
+	~	
+	~		|
+
+Generación de errores  = A FUNCTION OF( Trabajo)
+	~	
+	~		|
+
+Lenguaje  = A FUNCTION OF( )
+	~	
+	~		|
+
+Plazo restante  = A FUNCTION OF( Prorroga,Time)
+	~	
+	~		|
+
+Porcentaje aceptable de avance del proyecto  = A FUNCTION OF( )
+	~	
+	~		|
+
+Porcentaje de avance  = A FUNCTION OF( Tareas finalizadas,Tareas pendientes)
+	~	
+	~		|
+
+Presión de fecha de entrega  = A FUNCTION OF( Plazo restante,Porcentaje de avance)
+	~	
+	~		|
+
+Prorroga  = A FUNCTION OF( Cantidad de prorrogas disponibles,Porcentaje aceptable de avance del proyecto\
+		,Porcentaje de avance,Prorroga normal)
+	~	
+	~		|
+
+Prorroga normal  = A FUNCTION OF( )
+	~	
+	~		|
+
+Revision de cátedra  = A FUNCTION OF( )
+	~	
+	~		|
+
+Tareas finalizadas  = A FUNCTION OF( Trabajo)
+	~	
+	~		|
+
+Tareas pendientes  = A FUNCTION OF( Cantidad de tareas iniciales,Correcciones de cátedra pasadas a tareas pendientes\
+		,Errores transformados a tareas pendientes,-Trabajo)
+	~	
+	~		|
+
+Tiene familia  = A FUNCTION OF( )
+	~	
+	~		|
+
+Trabaja  = A FUNCTION OF( )
+	~	
+	~		|
+
+Trabajo  = A FUNCTION OF( Acceso a material de ayuda,Carga horaria de dedicación al proyecto\
+		,Experiencia,Presión de fecha de entrega)
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 150
+	~	Day
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Day
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP 
+	~	Day [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Day [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,100,0
+10,1,Tareas pendientes,282,351,40,20,3,3,0,0,0,0,0,0
+10,2,Tareas finalizadas,698,334,40,20,3,3,0,0,0,0,0,0
+10,3,Correcciones de cátedra,465,550,40,20,3,3,0,0,0,0,0,0
+10,4,Errores,109,566,40,20,3,3,0,0,0,0,0,0
+10,5,Trabaja,835,687,28,10,8,3,0,0,0,0,0,0
+10,6,Tiene familia,710,661,45,10,8,3,0,0,0,0,0,0
+10,7,Carga horaria de dedicación al proyecto,832,535,78,18,8,3,0,0,0,0,0,0
+10,8,Cantidad de materias cursando,1061,865,65,18,8,3,0,0,0,0,0,0
+10,9,Carga horaria dedicada a la facultad,942,759,76,18,8,3,0,0,0,0,0,0
+10,10,Enfermedad,1131,385,42,10,8,3,0,0,0,0,0,0
+10,11,Factor de disminución de productividad por enfermedad,1339,312,87,27,8,3,0,0,0,0,0,0
+10,12,Carga horaria de consulta,861,872,60,18,8,3,0,0,0,0,0,0
+10,13,Experiencia,969,443,40,10,8,3,0,0,0,0,0,0
+10,14,Bases de datos,1039,536,50,10,8,3,0,0,0,0,0,0
+10,15,Lenguaje,1114,482,32,10,8,3,0,0,0,0,0,0
+10,16,Analisis y diseño,1162,537,57,10,8,3,0,0,0,0,0,0
+10,17,Acceso a material de ayuda,633,546,61,18,8,3,0,0,0,0,0,0
+10,18,Presión de fecha de entrega,251,189,57,18,8,3,0,0,0,0,0,0
+10,19,Cantidad de tareas iniciales,113,249,52,18,8,3,0,0,0,0,0,0
+10,20,Porcentaje aceptable de avance del proyecto,939,255,79,18,8,3,0,0,0,0,0,0
+10,21,Prorroga,627,175,32,10,8,3,0,0,0,0,0,0
+10,22,Prorroga normal,924,135,58,10,8,3,0,0,0,0,0,0
+10,23,Cantidad de prorrogas disponibles,783,69,43,27,8,3,0,0,0,0,0,0
+1,24,26,2,4,0,0,22,0,0,0,-1--1--1,,1|(577,342)|
+1,25,26,1,100,0,0,22,0,0,0,-1--1--1,,1|(403,342)|
+11,26,0,490,342,6,8,34,3,0,0,1,0,0,0
+10,27,Trabajo,490,360,28,10,40,3,0,0,-1,0,0,0
+1,28,30,1,4,0,0,22,0,0,0,-1--1--1,,1|(110,351)|
+1,29,30,4,100,0,0,22,0,0,0,-1--1--1,,1|(110,504)|
+11,30,0,110,454,6,8,34,3,0,0,1,0,0,0
+10,31,Errores transformados a tareas pendientes,110,480,78,18,40,3,0,0,-1,0,0,0
+1,32,14,13,0,0,0,0,0,64,0,-1--1--1,,1|(1008,495)|
+1,33,15,13,0,0,0,0,0,64,0,-1--1--1,,1|(1050,465)|
+1,34,16,13,0,0,0,0,0,64,0,-1--1--1,,1|(1071,493)|
+1,35,19,1,0,0,0,0,0,64,0,-1--1--1,,1|(189,295)|
+1,36,20,21,0,0,0,0,0,64,0,-1--1--1,,1|(770,211)|
+10,37,Porcentaje de avance,478,222,47,18,8,3,0,0,0,0,0,0
+1,38,1,37,0,0,0,0,0,64,0,-1--1--1,,1|(375,289)|
+1,39,2,37,0,0,0,0,0,64,0,-1--1--1,,1|(592,280)|
+1,40,37,21,0,0,0,0,0,64,0,-1--1--1,,1|(553,198)|
+1,41,22,21,0,0,0,0,0,64,0,-1--1--1,,1|(769,155)|
+1,42,23,21,0,0,0,0,0,64,0,-1--1--1,,1|(698,126)|
+10,43,Time,134,29,27,10,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|0||128-128-128
+10,44,Plazo restante,536,45,49,10,8,3,0,0,0,0,0,0
+1,45,21,44,0,0,0,0,0,64,0,-1--1--1,,1|(585,115)|
+1,46,43,44,0,0,0,0,0,64,0,-1--1--1,,1|(317,36)|
+1,47,44,18,0,0,0,0,0,64,0,-1--1--1,,1|(407,109)|
+1,48,17,27,0,0,0,0,0,64,0,-1--1--1,,1|(562,454)|
+1,49,13,27,0,0,0,0,0,64,0,-1--1--1,,1|(730,401)|
+1,50,7,27,0,0,0,0,0,64,0,-1--1--1,,1|(659,446)|
+1,51,6,7,0,0,0,0,0,64,0,-1--1--1,,1|(761,607)|
+1,52,5,7,0,0,0,0,0,64,0,-1--1--1,,1|(833,621)|
+1,53,8,9,0,0,0,0,0,64,0,-1--1--1,,1|(1006,816)|
+1,54,12,9,0,0,0,0,0,64,0,-1--1--1,,1|(896,821)|
+1,55,9,7,0,0,0,0,0,64,0,-1--1--1,,1|(890,653)|
+12,56,48,123,722,10,8,0,3,0,0,-1,0,0,0
+1,57,59,4,4,0,0,22,0,0,0,-1--1--1,,1|(121,612)|
+1,58,59,56,100,0,0,22,0,0,0,-1--1--1,,1|(121,684)|
+11,59,0,121,646,6,8,34,3,0,0,1,0,0,0
+10,60,Generación de errores,121,672,50,18,40,3,0,0,-1,0,0,0
+1,61,63,1,4,0,0,22,0,0,0,-1--1--1,,1|(287,430)|
+1,62,63,3,100,0,0,22,0,0,0,-1--1--1,,1|(465,498)|
+11,63,0,287,498,6,8,34,3,0,0,1,0,0,0
+10,64,Correcciones de cátedra pasadas a tareas pendientes,287,533,83,27,40,3,0,0,-1,0,0,0
+1,65,2,13,0,0,0,0,0,64,0,-1--1--1,,1|(834,388)|
+1,66,27,59,0,0,0,0,0,64,0,-1--1--1,,1|(307,501)|
+12,67,48,460,670,10,8,0,3,0,0,-1,0,0,0
+1,68,70,3,4,0,0,22,0,0,0,-1--1--1,,1|(460,590)|
+1,69,70,67,100,0,0,22,0,0,0,-1--1--1,,1|(460,642)|
+11,70,0,460,616,8,6,33,3,0,0,4,0,0,0
+10,71,Revision de cátedra,508,616,40,18,40,3,0,0,-1,0,0,0
+1,72,18,27,0,0,0,0,0,64,0,-1--1--1,,1|(370,274)|
+1,73,37,18,0,0,0,0,0,64,0,-1--1--1,,1|(376,207)|
+///---\\\
+:L<%^E!@
+9:Current
+23:0
+15:0,0,0,0,0,0
+19:100,0
+27:2,
+34:0,
+5:Trabajo
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:4
+41:0
+42:1
+24:0
+25:0
+26:0
