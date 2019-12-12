@@ -1,0 +1,266 @@
+{UTF-8}
+Calidad=
+	Experiencia*Factor de aprendizaje
+	~	
+	~	Calidad de los trabajos dados como finalizados
+	|
+
+Nivel de produccion real=
+	Produccion potencial*Experiencia
+	~	Dmnl
+	~		|
+
+Presion=
+	Duración prevista+Time
+	~	
+	~		|
+
+Produccion potencial=
+	0.6
+	~	
+	~		|
+
+Factor de aprendizaje=
+	0.5
+	~	Dmnl
+	~		|
+
+Experiencia previa=
+	0.5
+	~	
+	~		|
+
+Experiencia=
+	(Tareas finalizadas*0.4)*Experiencia previa
+	~	
+	~		|
+
+Trabajo=
+	IF THEN ELSE(Tareas pendientes<1,0,Trabajo requerido*Presion*Nivel de produccion real\
+		)
+	~	tareas/mes
+	~	Si las tareas pendientes son menor que 1 (0) no se hace ninguna, en caso \
+		contrario se hace el Trabajo requerido
+	|
+
+Trabajo requerido=
+	MIN(Cantidad de trabajo fijo por mes,XIDZ(Tareas pendientes,Plazo restante,Tareas pendientes\
+		/0.1))
+	~	tareas/mes
+	~	La cantidad de trabajo requerido (llamado) será como máximo la Fuerza de \
+		trabajo disponible. Se calcula como el cociente entre las Tareas \
+		pendientes (tareas) y el Plazo restante (meses). La funcion XIDZ nos \
+		ofrece este cociente excepto cuando el Plazo restante es cero, en cuyo \
+		supuesto se toma 1 como Plazo.
+	|
+
+Plazo restante=
+	MAX(Duración prevista-Time,0)
+	~	mes
+	~	Es una forma sencilla de contar el plazo residual en cada momento, \
+		empezando por 10 meses hasta llegar a 0.
+	|
+
+Retraso en detectar errores = WITH LOOKUP (
+	Tareas pendientes/Total de tareas previstas,
+		((0,0.5),(0.2,1),(0.4,3),(0.6,6),(0.8,9),(1,12) ))
+	~	mes
+	~	Se reconsidera la constante (7) que habiamos puesto en el modelo 3, y se \
+		hace que sea función de la cantidad de tareas pendientes que hay.\!\!
+	|
+
+Duración prevista=
+	10
+	~	mes
+	~	Hay 1000 tareas a un ritmo previsto de 100 al mes
+	|
+
+Cantidad de trabajo fijo por mes=
+	250
+	~	tareas/mes
+	~	Corresponde a la capacidad de producción máxima
+	|
+
+Errores detectados=
+	Errores no detectados/Retraso en detectar errores
+	~	tareas/mes
+	~	Tomaremos una fracción constante de los errores pendientes de detectar.
+	|
+
+Errores=
+	Trabajo*(1-Calidad)
+	~	tareas/mes
+	~	Los errores serán función de la cantidad de trabajo hecho por el \
+		porcentaje de trabajo que no cumple las Normas.
+	|
+
+Errores no detectados= INTEG (
+	Errores-Errores detectados,
+		0)
+	~	tareas
+	~		|
+
+Tareas finalizadas= INTEG (
+	Trabajo,
+		0)
+	~	tareas
+	~		|
+
+Tareas pendientes= INTEG (
+	-Trabajo+Errores detectados,
+		Total de tareas previstas)
+	~	tareas
+	~		|
+
+Total de tareas previstas=
+	1000
+	~	tareas
+	~	Total de tareas previstas para el proyecto. Las vamos a considerar todas \
+		iguales, ya que el propósito del modelo es trabajar con parametros no \
+		previsibles como son los errores en el proyecto.
+	|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Paramaters
+	|
+
+FINAL TIME  = 270
+	~	Day
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Day
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Day
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Day
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-0|-1--1--1|-1--1--1|96,96,100,0
+10,1,Tareas finalizadas,638,376,39,31,3,3,0,0,0,0,0,0
+10,2,Tareas pendientes,352,375,42,32,3,3,0,0,0,0,0,0
+1,3,5,1,4,0,0,22,0,0,0,-1--1--1,,1|(551,376)|
+1,4,5,2,100,0,0,22,0,0,0,-1--1--1,,1|(442,376)|
+11,5,332,497,376,6,8,34,3,0,0,3,0,0,0
+10,6,Trabajo,497,357,28,10,32,3,0,0,-1,0,0,0
+10,7,Total de tareas previstas,121,498,81,10,0,3,0,0,0,0,0,0
+10,8,Errores no detectados,451,516,40,25,3,3,0,0,0,0,0,0
+12,9,48,674,518,10,8,0,3,0,0,-1,0,0,0
+1,10,12,8,4,0,0,22,0,0,0,-1--1--1,,1|(531,518)|
+1,11,12,9,100,0,0,22,0,0,0,-1--1--1,,1|(624,518)|
+11,12,48,578,518,6,8,34,3,0,0,3,0,0,0
+10,13,Errores,578,499,26,10,32,3,0,0,-1,0,0,0
+1,14,16,2,4,0,0,22,0,0,0,-1--1--1,,1|(337,457)|
+1,15,16,8,100,0,0,22,0,0,0,-1--1--1,,1|(377,516)|
+11,16,540,337,516,6,8,34,3,0,0,1,0,0,0
+10,17,Errores detectados,337,535,63,10,32,3,0,0,-1,0,0,0
+1,18,6,13,1,0,0,0,0,0,0,-1--1--1,,1|(564,413)|
+10,19,Calidad,657,429,28,10,0,3,0,0,0,0,0,0
+1,20,19,13,1,0,0,0,0,0,0,-1--1--1,,1|(639,483)|
+10,21,Retraso en detectar errores,251,575,91,10,0,3,0,0,0,0,0,0
+1,22,21,17,1,0,0,0,0,0,0,-1--1--1,,1|(307,621)|
+1,23,8,17,1,0,0,0,0,0,0,-1--1--1,,1|(405,555)|
+1,24,2,21,1,0,0,0,0,0,0,-1--1--1,,1|(227,495)|
+10,25,Duración prevista,415,187,61,10,0,3,0,0,0,0,0,0
+10,26,Plazo restante,256,249,49,10,0,3,0,0,0,0,0,0
+1,27,25,26,1,0,0,0,0,0,0,-1--1--1,,1|(295,196)|
+10,28,Cantidad de trabajo fijo por mes,134,294,108,10,0,3,0,0,0,0,0,0
+10,29,Trabajo requerido,301,314,61,10,0,3,0,0,0,0,0,0
+1,30,26,29,1,0,0,0,0,0,0,-1--1--1,,1|(271,277)|
+1,31,2,29,1,0,0,0,0,0,0,-1--1--1,,1|(313,345)|
+1,32,28,29,1,0,0,0,0,0,0,-1--1--1,,1|(237,343)|
+1,33,29,6,1,0,0,0,0,0,0,-1--1--1,,1|(352,280)|
+1,34,2,6,0,0,0,0,0,0,0,-1--1--1,,1|(424,365)|
+1,35,7,21,1,0,0,0,0,64,0,-1--1--1,,1|(206,595)|
+10,36,Time,410,238,26,11,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|12||128-128-128
+1,37,36,26,0,0,0,0,0,64,0,-1--1--1,,1|(351,241)|
+1,38,7,2,0,0,0,0,0,0,1,-1--1--1,,1|(218,445)|
+10,39,Presion,542,263,27,10,8,3,0,0,0,0,0,0
+1,40,36,39,0,0,0,0,0,64,0,-1--1--1,,1|(468,248)|
+1,41,39,6,1,0,0,0,0,64,0,-1--1--1,,1|(525,309)|
+10,42,Experiencia,767,378,40,10,8,3,0,0,0,0,0,0
+1,43,1,42,0,0,0,0,0,64,0,-1--1--1,,1|(695,376)|
+10,44,Experiencia previa,801,302,41,18,8,3,0,0,0,0,0,0
+1,45,44,42,1,0,0,0,0,64,0,-1--1--1,,1|(831,344)|
+10,46,Nivel de produccion real,650,298,55,18,8,3,0,0,0,0,0,0
+1,47,46,6,0,0,0,0,0,64,0,-1--1--1,,1|(569,329)|
+1,48,42,46,1,0,0,0,0,64,0,-1--1--1,,1|(746,341)|
+10,49,Produccion potencial,722,216,40,18,8,3,0,0,0,0,0,0
+1,50,49,46,1,0,0,0,0,64,0,-1--1--1,,1|(666,252)|
+1,51,25,39,1,0,0,0,0,64,0,-1--1--1,,1|(501,202)|
+10,52,Factor de aprendizaje,813,489,41,18,8,3,0,0,0,0,0,0
+1,53,42,19,1,0,0,0,0,64,0,-1--1--1,,1|(748,427)|
+1,54,52,19,1,0,0,0,0,64,0,-1--1--1,,1|(720,488)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 2
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,100,0
+///---\\\
+:GRAPH GRAPH
+:TITLE GRAPH
+:Y-DIV 7
+:SCALE
+:VAR Tareas pendientes
+:Y-MIN -200
+:Y-MAX 1200
+:SCALE
+:VAR Tareas finalizadas
+:Y-MIN -200
+:Y-MAX 1200
+:LINE-WIDTH 3
+
+:GRAPH GRAPH_0
+:TITLE Trabajo
+:SCALE
+:VAR Trabajo
+:Y-MAX 200
+:LINE-WIDTH 2
+
+:GRAPH ERRORES
+:TITLE Errores
+:Y-DIV 3
+:SCALE
+:VAR Errores detectados
+:Y-MIN 0
+:Y-MAX 20
+:LINE-WIDTH 2
+:SCALE
+:VAR Errores
+:Y-MIN 0
+:Y-MAX 20
+:LINE-WIDTH 1
+:L<%^E!@
+1:Z:\home\urc\Documentos\Facultad\MyS - Modelos y Simulacion\DS\Current.vdf
+9:Current
+23:0
+15:0,0,0,0,0,0
+19:100,0
+27:2,
+34:0,
+4:Time
+5:Plazo restante
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:4
+41:0
+42:0
+24:0
+25:270
+26:270
